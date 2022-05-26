@@ -37,24 +37,26 @@ ul {
     right: 0;
     left: 0;
     transition: all .2s ease-in;
-    width: 320px;
-    height: 320px;
+    width: 540px;
+    height: 540px;
     margin: auto;
     background: linear-gradient(#2196F3, #2196F3) left top, linear-gradient(#2196F3, #2196F3) left top, linear-gradient(#2196F3, #2196F3) right top, linear-gradient(#2196F3, #2196F3) right top, linear-gradient(#2196F3, #2196F3) right bottom, linear-gradient(#2196F3, #2196F3) right bottom, linear-gradient(#2196F3, #2196F3) left bottom, linear-gradient(#2196F3, #2196F3) left bottom;
     background-repeat: no-repeat;
-    background-size: 3px 30px, 30px 3px
+    background-size: 5px 50px, 50px 5px
+}
+.app__overlay2 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-top: 0;
 }
 
-.app__overlay::after {
-    content: "";
-    display: table;
-    line-height: 0;
-    width: 314px;
-    height: 314px;
-    margin-top: 3px;
-    margin-left: 3px;
-    box-shadow: 0 -1px 0 rgba(249, 249, 249, .06), 0 0 3px rgba(255, 255, 255, .18), 0 1px 3px rgba(253, 253, 253, .18)
-}
+
 
 @-webkit-keyframes scanner {
     0% {
@@ -97,8 +99,8 @@ ul {
     }
 }
 .custom-scanner {
-    width: 300px;
-    height: 3px;
+    width: 500px;
+    height: 5px;
     background: linear-gradient(to right, rgba(0, 0, 0, 0) 00%, #2196f3 50%, rgba(0, 0, 0, 0) 100%);
     position: absolute;
     -webkit-transition: all .2s linear;
@@ -109,7 +111,7 @@ ul {
     -o-animation: scanner 7s infinite linear;
     animation: scanner 7s linear infinite;
     display: none;
-    margin-left: 10px
+    margin-left: 20px
 }
     </style>
 </head>
@@ -118,10 +120,17 @@ ul {
     <div class="app__layout"><video id="v" autoplay playsinline disablepictureinpicture muted></video></div>
     <canvas id="canvas" style="display:none;"></canvas>
     <div class="app__overlay">
-        <div class="app__overlay-frame"></div>
         <div class="custom-scanner" style="display: block;"></div>
-        <div class="app__help-text"></div>
     </div>
+    <svg class="app__overlay2">
+        <defs>
+          <mask id="myMask">
+            <rect x="0" y="0" width="100%" height="100%" style="stroke:none; fill: #ccc;"></rect>
+            <rect width="540px" height="540px" x="50%" y="50%" transform="translate(-270,-270)" style="fill: #000"></rect>
+          </mask>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" style="stroke: none; fill: rgba(0, 0, 0, 0.5); mask: url(#myMask)"></rect>
+    </svg>
     <script>
         !(function () {
             // 老的浏览器可能根本没有实现 mediaDevices，所以我们可以先设置一个空的对象
