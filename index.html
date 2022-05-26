@@ -1,183 +1,202 @@
-
 <!-- saved from url=(0018)https://webqr.com/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-merge-styles="true"></style>
-  <meta name="description" content="QR Code scanner">
-  <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript">
-  <meta name="language" content="English">
-  <meta name="copyright" content="Lazar Laszlo (c) 2011">
-  <meta name="Revisit-After" content="1 Days">
-  <meta name="robots" content="index, follow">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web QR</title>
+<html>
 
-<style type="text/css">
-body{
-    width:100%;
-    text-align:center;
-}
-img{
-    border:0;
-}
-#main{
-    margin: 15px auto;
-    background:white;
-    overflow: auto;
-	width: 100%;
-}
-#header{
-    background:white;
-    margin-bottom:15px;
-}
-#mainbody{
-    background: white;
-    width:100%;
-	display:none;
-}
-#footer{
-    background:white;
-}
-#v{
-    width:320px;
-    height:240px;
-}
-#qr-canvas{
-    display:none;
-}
-#qrfile{
-    width:320px;
-    height:240px;
-}
-#mp1{
-    text-align:center;
-    font-size:35px;
-}
-#imghelp{
-    position:relative;
-    left:0px;
-    top:-160px;
-    z-index:100;
-    font:18px arial,sans-serif;
-    background:#f0f0f0;
-	margin-left:35px;
-	margin-right:35px;
-	padding-top:10px;
-	padding-bottom:10px;
-	border-radius:20px;
-}
-.selector{
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    margin-bottom:-5px;
-}
-#outdiv
-{
-    width:320px;
-    height:240px;
-	border: solid;
-	border-width: 3px 3px 3px 3px;
-}
-#result{
-    border: solid;
-	border-width: 1px 1px 1px 1px;
-	padding:20px;
-	width:70%;
-}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style data-merge-styles="true"></style>
+    <meta name="description" content="QR Code scanner">
+    <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript">
+    <meta name="language" content="English">
+    <meta name="copyright" content="Lazar Laszlo (c) 2011">
+    <meta name="Revisit-After" content="1 Days">
+    <meta name="robots" content="index, follow">
 
-ul{
-    margin-bottom:0;
-    margin-right:40px;
-}
-li{
-    display:inline;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-    font-weight: bold;
-    border-right: 1px solid #333333;
-}
-li a{
-    text-decoration: none;
-    color: black;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web QR</title>
 
-#footer a{
-	color: black;
-}
-.tsel{
-    padding:0;
-}
+    <style type="text/css">
+        body {
+            width: 100%;
+            text-align: center;
+        }
 
-</style>
+        img {
+            border: 0;
+        }
 
-<script src="./Web QR2_files/cb=gapi.loaded_1" async=""></script><script type="text/javascript" async="" src="./Web QR2_files/ga.js.下载"></script><script src="./Web QR2_files/cb=gapi(1).loaded_0" async=""></script><script type="text/javascript" src="./Web QR2_files/llqrcode.js.下载"></script>
-<script type="text/javascript" src="./Web QR2_files/plusone.js.下载" gapi_processed="true"></script>
-<script type="text/javascript" src="./Web QR2_files/webqr.js.下载"></script>
+        #main {
+            margin: 15px auto;
+            background: white;
+            overflow: auto;
+            width: 100%;
+        }
 
-<script type="text/javascript">
+        #header {
+            background: white;
+            margin-bottom: 15px;
+        }
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24451557-1']);
-  _gaq.push(['_trackPageview']);
+        #mainbody {
+            background: white;
+            width: 100%;
+            display: none;
+        }
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+        #footer {
+            background: white;
+        }
 
-</script>
+        #v {
+            width: 320px;
+            height: 240px;
+        }
 
-<style>hcfy-result.__hcfy__result__loaded__.__hcfy__result__both__{border: 1px dotted}</style><script src="./Web QR2_files/js"></script></head>
+        #qr-canvas {
+            display: none;
+        }
+
+        #qrfile {
+            width: 320px;
+            height: 240px;
+        }
+
+        #mp1 {
+            text-align: center;
+            font-size: 35px;
+        }
+
+        #imghelp {
+            position: relative;
+            left: 0px;
+            top: -160px;
+            z-index: 100;
+            font: 18px arial, sans-serif;
+            background: #f0f0f0;
+            margin-left: 35px;
+            margin-right: 35px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 20px;
+        }
+
+        .selector {
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            margin-bottom: -5px;
+        }
+
+        #outdiv {
+            width: 320px;
+            height: 240px;
+            border: solid;
+            border-width: 3px 3px 3px 3px;
+        }
+
+        #result {
+            border: solid;
+            border-width: 1px 1px 1px 1px;
+            padding: 20px;
+            width: 70%;
+        }
+
+        ul {
+            margin-bottom: 0;
+            margin-right: 40px;
+        }
+
+        li {
+            display: inline;
+            padding-right: 0.5em;
+            padding-left: 0.5em;
+            font-weight: bold;
+            border-right: 1px solid #333333;
+        }
+
+        li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #footer a {
+            color: black;
+        }
+
+        .tsel {
+            padding: 0;
+        }
+    </style>
+
+    <script src="./Web QR_files/cb=gapi.loaded_1" async=""></script>
+    <script type="text/javascript" async="" src="./Web QR_files/ga.js.下载"></script>
+    <script src="./Web QR_files/cb=gapi(1).loaded_0" async=""></script>
+    <script type="text/javascript" src="./Web QR_files/llqrcode.js.下载"></script>
+    <script type="text/javascript" src="./Web QR_files/plusone.js.下载" gapi_processed="true"></script>
+    <script type="text/javascript" src="./Web QR_files/webqr.js.下载"></script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24451557-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <style>
+        hcfy-result.__hcfy__result__loaded__.__hcfy__result__both__ {
+            border: 1px dotted
+        }
+    </style>
+</head>
 
 <body>
-<div id="main">
-<div id="header">
-<div style="position:relative;top:+20px;left:0px;"><div style="position: absolute; width: 450px; left: -10000px;" id="___plusone_0"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" width="100%" id="I0_1653547363673" name="I0_1653547363673" src="./Web QR2_files/fastbutton.html" data-gapiattached="true"></iframe></div><g:plusone size="medium" data-gapiscan="true" data-onload="true" data-gapistub="true"></g:plusone></div>
-<p id="mp1">
-QR Code scanner
-</p>
-<ul>
-<li><a href="https://webqr.com/index.html">Scan</a></li>
-<li><a href="https://webqr.com/create.html">Create</a></li>
-<li><a href="https://webqr.com/about.html">About</a></li>
-<li style="border: medium none;"><a href="https://webqr.com/contact.html">Contact</a></li>
-</ul>
+    <div id="main">
+        <div id="mainbody" style="display: inline;">
+            <table class="tsel" border="0" width="100%">
+                <tbody>
+                    <tr>
+                        <td valign="top" align="center" width="50%">
+                            <table class="tsel" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td><img class="selector" id="webcamimg" src="./Web QR_files/vid.png"
+                                                onclick="setwebcam()" align="left" style="opacity: 1;"></td>
+                                        <td><img class="selector" id="qrimg" src="./Web QR_files/cam.png"
+                                                onclick="setimg()" align="right" style="opacity: 0.2;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <div id="outdiv"><video id="v" autoplay=""></video></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <img src="./Web QR_files/down.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <div id="result">- scanning -</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
+    <script type="text/javascript">load();</script>
+</body>
+<div style="all: initial;">
+    <div id="__hcfy__" style="all: initial;"></div>
 </div>
-<div id="mainbody" style="display: inline;">
-<table class="tsel" border="0" width="100%">
-<tbody><tr>
-<td valign="top" align="center" width="50%">
-<table class="tsel" border="0">
-<tbody><tr>
-<td><img class="selector" id="webcamimg" src="./Web QR2_files/vid.png" onclick="setwebcam()" align="left" style="opacity: 1;"></td>
-<td><img class="selector" id="qrimg" src="./Web QR2_files/cam.png" onclick="setimg()" align="right" style="opacity: 0.2;"></td></tr>
-<tr><td colspan="2" align="center">
-<div id="outdiv"><video id="v" autoplay=""></video></div></td></tr>
-</tbody></table>
-</td>
-</tr>
-<tr><td colspan="3" align="center">
-<img src="./Web QR2_files/down.png">
-</td></tr>
-<tr><td colspan="3" align="center">
-<div id="result">- scanning -</div>
-</td></tr>
-</tbody></table>
-<script async="" src="./Web QR2_files/f.txt"></script>
-<!-- webqr_2016 -->
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8418802408648518" data-ad-slot="2527990541" data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>&nbsp;
-<div id="footer">
-<img style="position:relative;top:0px;left:0px;margin:0;padding:0;" src="./Web QR2_files/comodo_secure_seal_100x85_transp.png">
-<h5 align="center">Copyright © 2011 <a target="_blank" href="http://www.lazarsoft.info/">Lazar Laszlo</a></h5>
-</div>
-<div id="extwaiokist" style="display:none" v="cbopg" q="5757a139" c="419.7" i="424" u="1.729" s="05052216" d="1" w="false" e="" m="BMe=" vn="3ges2"><div id="extwaigglbit" style="display:none" v="cbopg" q="5757a139" c="419.7" i="424" u="1.729" s="05052216" d="1" w="false" e="" m="BMe="></div></div></div>
-<canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
-<script type="text/javascript">load();</script>
-
-
-<iframe name="oauth2relay749827129" id="oauth2relay749827129" src="./Web QR2_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><div style="all: initial;"><div id="__hcfy__" style="all: initial;"></div></div><editor-card style="position:absolute;top:0px;left:0px;z-index:auto;display: block !important"><div dir="auto" style="all: initial;"><div style="color: initial; font: initial; font-feature-settings: initial; font-kerning: initial; font-optical-sizing: initial; font-palette: initial; font-synthesis: initial; font-variation-settings: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation: initial; app-region: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: initial; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; offset: initial; opacity: initial; order: initial; origin-trial-test-property: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-clip-margin: initial; overflow-wrap: initial; overflow: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: absolute; quotes: initial; r: initial; resize: initial; ruby-position: initial; rx: initial; ry: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scrollbar-gutter: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; user-select: initial; vector-effect: initial; vertical-align: initial; visibility: initial; border-spacing: initial; -webkit-border-image: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-highlight: initial; -webkit-hyphenate-character: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-mask: initial; -webkit-mask-composite: initial; -webkit-perspective-origin-x: initial; -webkit-perspective-origin-y: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-transform-origin-x: initial; -webkit-transform-origin-y: initial; -webkit-transform-origin-z: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; white-space: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"><link rel="stylesheet" href="chrome-extension://hokifickgkhplphjiodbggjmoafhignh/fonts/fabric-icons.css"><div style="all: initial;"></div></div></div></editor-card></html>
+</html>
