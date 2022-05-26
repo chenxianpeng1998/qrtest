@@ -6,103 +6,11 @@
     <title>拍照2</title>
     <script src="./reqrcode.js"></script>
     <style>
-blockquote,
 body,
-dd,
-dl,
-dt,
-fieldset,
-figure,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-html,
-iframe,
-legend,
-li,
-ol,
-p,
-pre,
-textarea,
 ul {
     margin: 0;
     padding: 0
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: 100%;
-    font-weight: 400
-}
-
-ul {
     list-style: none
-}
-
-button,
-input,
-select,
-textarea {
-    margin: 0
-}
-
-html {
-    box-sizing: border-box
-}
-
-*,
-:after,
-:before {
-    box-sizing: inherit
-}
-
-audio,
-embed,
-img,
-object {
-    height: auto;
-    max-width: 100%
-}
-
-iframe {
-    border: 0
-}
-
-.showinfo {
-    border-radius: 80px;
-    margin: 40px 20px 0;
-    background-color: #ceead5;
-    padding: 12px 16px;
-    color: #005e19
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin: 0 auto
-}
-
-.showshare {
-    margin-top: 40px
-}
-
-td,
-th {
-    padding: 0;
-    text-align: left
-}
-
-body {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased
 }
         .app__layout {
             position: absolute;
@@ -122,12 +30,98 @@ body {
             overflow: hidden;
             position: absolute
         }
+        .app__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: all .2s ease-in;
+    width: 320px;
+    height: 320px;
+    margin: auto;
+    background: linear-gradient(#2196F3, #2196F3) left top, linear-gradient(#2196F3, #2196F3) left top, linear-gradient(#2196F3, #2196F3) right top, linear-gradient(#2196F3, #2196F3) right top, linear-gradient(#2196F3, #2196F3) right bottom, linear-gradient(#2196F3, #2196F3) right bottom, linear-gradient(#2196F3, #2196F3) left bottom, linear-gradient(#2196F3, #2196F3) left bottom;
+    background-repeat: no-repeat;
+    background-size: 3px 30px, 30px 3px
+}
+
+.app__overlay::after {
+    content: "";
+    display: table;
+    line-height: 0;
+    width: 314px;
+    height: 314px;
+    margin-top: 3px;
+    margin-left: 3px;
+    box-shadow: 0 -1px 0 rgba(249, 249, 249, .06), 0 0 3px rgba(255, 255, 255, .18), 0 1px 3px rgba(253, 253, 253, .18)
+}
+
+@-webkit-keyframes scanner {
+    0% {
+        bottom: 100%
+    }
+
+    50% {
+        bottom: 0
+    }
+
+    to {
+        bottom: 100%
+    }
+}
+
+@-moz-keyframes scanner {
+    0% {
+        bottom: 100%
+    }
+    to {
+        bottom: 0
+    }
+}
+
+@-o-keyframes scanner {
+    0% {
+        bottom: 100%
+    }
+    to {
+        bottom: 0
+    }
+}
+
+@keyframes scanner {
+    0% {
+        bottom: 100%
+    }
+    to {
+        bottom: 0
+    }
+}
+.custom-scanner {
+    width: 300px;
+    height: 3px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 00%, #2196f3 50%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+    -webkit-animation: scanner 7s linear infinite;
+    -moz-animation: scanner 7s infinite linear;
+    -o-animation: scanner 7s infinite linear;
+    animation: scanner 7s linear infinite;
+    display: none;
+    margin-left: 10px
+}
     </style>
 </head>
 
 <body>
     <div class="app__layout"><video id="v" autoplay playsinline disablepictureinpicture muted></video></div>
     <canvas id="canvas" style="display:none;"></canvas>
+    <div class="app__overlay">
+        <div class="app__overlay-frame"></div>
+        <div class="custom-scanner" style="display: block;"></div>
+        <div class="app__help-text"></div>
+    </div>
     <script>
         !(function () {
             // 老的浏览器可能根本没有实现 mediaDevices，所以我们可以先设置一个空的对象
