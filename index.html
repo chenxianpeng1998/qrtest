@@ -3,11 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>摄像头调用</title>
+    <title>拍照2</title>
+    <script src="./reqrcode.js"></script>
 </head>
 
 <body>
-    <video id="v" autoplay playsinline disablepictureinpicture muted></video>
+    <button id="take">拍照</button>
+    <br />
+    <video id="v" style="width: 640px;height: 480px;" autoplay playsinline disablepictureinpicture muted></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <br />
+    <img src="" id="photo" alt="photo">
+    <div id="base"></div>
     <script>
         !(function () {
             // 老的浏览器可能根本没有实现 mediaDevices，所以我们可以先设置一个空的对象
@@ -31,14 +38,13 @@
                 }
             }
             const constraints = {
-                video:{
-                    facingMode: "environment"
-                },
+                video: true,
                 audio: false
             };
+            let videoPlaying = false;
+            let v = document.getElementById('v');
             let promise = navigator.mediaDevices.getUserMedia(constraints);
             promise.then(stream => {
-                let v = document.getElementById('v');
                 // 旧的浏览器可能没有srcObject
                 if ("srcObject" in v) {
                     v.srcObject = stream;
@@ -48,11 +54,32 @@
                 }
                 v.onloadedmetadata = function (e) {
                     v.play();
+                    videoPlaying = true;
                 };
             }).catch(err => {
                 console.error(err.name + ": " + err.message);
             })
+            document.getElementById('take').addEventListener('click', function () {
+                if (videoPlaying) {
+                    let canvas = document.getElementById('canvas');
+                    canvas.width = v.videoWidth;
+                    canvas.height = v.videoHeight;
+                    canvas.getContext('2d').drawImage(v, 0, 0);
+                    let data = canvas.toDataURL('image/webp');
+                    document.getElementById('photo').setAttribute('src', data);
+                    qrcode.decode(data);
+                qrcode.callback = function(imgMsg) {
+                    if (imgMsg == 'error decoding QR Code') {
+                        alert(imgMsg)
+                    } else {
+                        alert(imgMsg)
+                        window.location.href = imgMsg
+                    };
+                };
+                }
+            }, false);
         })();
     </script>
 </body>
+
 </html>
